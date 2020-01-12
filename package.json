@@ -1,0 +1,24 @@
+{
+  "name": "SQL-ORMs-with-Node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattoattacko/SQL-ORMs-with-Node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattoattacko/SQL-ORMs-with-Node/issues"
+  },
+  "homepage": "https://github.com/mattoattacko/SQL-ORMs-with-Node#readme",
+  "dependencies": {
+    "sequelize": "^5.21.3",
+    "sqlite": "^3.0.3"
+  }
+}
