@@ -27,12 +27,17 @@ Movie.init({
 // Defines the async function. async IIFE
 // Uses a try...catch statement to catch all exceptions thrown. We pass catch() an error param to contain the error details. 
 // Can use 'await sequelize.authenticate()' in the try block to test the connection 
+// We can force sync all models by passing { force: true} to the sync() method. Calling 'sync({ force: true })' issues a DROP TABLE IF EXISTS statement, then issues CREATE TABLE IF NOT EXISTS statement. 
 // 
 (async () => {
-  await sequelize.sync();
+  await sequelize.sync({ force: true });
 
   try {
- 
+    // Instance of the Movie class represents a database row
+    const movie = await Movie.create({
+      title: 'Charles is my co-driver',
+    });
+    console.log(movie.toJSON());
   } catch (error) {
     console.error('Error connecting to database: ', error);
   }
