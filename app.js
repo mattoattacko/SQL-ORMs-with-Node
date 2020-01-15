@@ -26,13 +26,14 @@ Movie.init({
 
 // Defines the async function. async IIFE
 // Uses a try...catch statement to catch all exceptions thrown. We pass catch() an error param to contain the error details. 
-// await sequelize.authenticate() tests the connection 
+// Can use 'await sequelize.authenticate()' in the try block to test the connection 
 // 
 (async () => {
+  await sequelize.sync();
+
   try {
-    await sequelize.authenticate();
-    console.log('Connection to database successful');
+ 
   } catch (error) {
-    console.error('Error connecting to database');
+    console.error('Error connecting to database: ', error);
   }
 })();
