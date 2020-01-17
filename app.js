@@ -2,7 +2,8 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: 'movies.db'
+  storage: 'movies.db',
+  // logging: false //disables SQL logging to console
 });
 
 // Movie model / creates Movies table
@@ -38,6 +39,13 @@ Movie.init({
       title: 'Charles is my co-driver',
     });
     console.log(movie.toJSON());
+
+    // testing new entry
+    const movie2 = await Movie.create({
+      title: 'Matt & Charles Excellent Adventure',
+    });
+    console.log(movie2.toJSON());
+
   } catch (error) {
     console.error('Error connecting to database: ', error);
   }
