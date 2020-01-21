@@ -10,12 +10,18 @@ const { Movie } = db.models;
 
   try {
     const movie = await Movie.create({
-      title: 'Matt & Charles: Episode 1'
+      title: 'Matt & Charles: Episode 1',
+      runtime: 81,
+      releaseDate: '2000-01-02',
+      isAvailableOnVHS: true,
     });
     console.log(movie.toJSON());
 
     const movie2 = await Movie.create({
-      title: 'Matt & Charles 7: Return of the Matt'
+      title: 'Matt & Charles 7: Return of the Matt',
+      runtime: 120,
+      releaseDate: '2001-01-03',
+      isAvailableOnVHS: true,
     });
     console.log(movie2.toJSON());
 

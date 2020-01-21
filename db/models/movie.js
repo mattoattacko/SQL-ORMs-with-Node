@@ -13,16 +13,21 @@ module.exports = (sequelize) => {
       autoIncrement: true,
     },
     title: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      allowNull: false, // disallow null
     },
     runtime: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      allowNull: false, // disallow null
     },
     releaseDate: {
-      type: Sequelize.DATEONLY
+      type: Sequelize.DATEONLY,
+      allowNull: false, // disallow null
     },
     isAvailableOnVHS: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.BOOLEAN,
+      allowNull: false, // disallow null
+      defaultValue: false, // set default value
     },
   }, {sequelize});
 
