@@ -15,14 +15,33 @@ module.exports = (sequelize) => {
     title: {
       type: Sequelize.STRING,
       allowNull: false, // disallow null
+      validate: {
+        notNull: {
+          msg: 'Please provide a value for "title',
+        },
+        notEmpty: { 
+          // our custom error message
+          msg: 'Please provide a value for "title"',
+        } 
+      },
     },
     runtime: {
       type: Sequelize.INTEGER,
       allowNull: false, // disallow null
+      validate: {
+        notNull: {
+          msg: 'Please provide a value for "runtime"',
+        }
+      },
     },
     releaseDate: {
       type: Sequelize.DATEONLY,
       allowNull: false, // disallow null
+      validate: {
+        notNull: {
+          msg: 'Please provide a value for "releaseDate"',
+        }
+      },
     },
     isAvailableOnVHS: {
       type: Sequelize.BOOLEAN,
