@@ -26,6 +26,15 @@ const { Movie } = db.models;
     console.log(movie2.toJSON());
 
   } catch (error) {
-    console.error('Error connecting to the database my dude: ', error);
+    // This if says "if the error is SequelizeValidationError, map over the error item(s) and return an array holding any error messages." 
+    // In our case, we are outputting them to the console.
+    if (error.name === 'SequelizeValidationError') {
+      const errors = error.errors.map(err => err.message);
+      console.error('Validation errors: ', errors);
+    } 
+    // In this else block, we use a 'throw' statement to rethrow other types of errors caught by catch. ie: general or unforseen errors.
+    else {
+      throw error;
+    }
   }
 })();
