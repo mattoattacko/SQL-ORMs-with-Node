@@ -7,6 +7,8 @@ module.exports = (sequelize) => {
     // "primaryKey: true" tells Sequelize to generate the primary key column using the property name defined in the model (for us its 'id').
     // The ID should be a number, so our data tpe is INTEGER.
     // "autoIncrement: true" auto generates an ID that increments by 1 for each new entry.
+
+    // ATTRIBUTES OBJECT 
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -56,7 +58,16 @@ module.exports = (sequelize) => {
       allowNull: false, // disallow null
       defaultValue: false, // set default value
     },
-  }, {sequelize});
+  }, 
+  
+  // MODEL OPTIONS OBJECT
+  {
+    timestamps: false, // disable timestamps
+    freezeTableName: true, // disable plural table names
+    modelName: 'movie', // set model name to 'movie', table name will be 'movies'
+    tableName: 'my_movies_table', // table name change
+    sequelize
+  });
 
   return Movie;
 };
