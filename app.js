@@ -3,7 +3,7 @@
 // The app.js file only contains the code related to syncing models, querying data, and CRUD operations.
 
 const db = require('./db');
-const { Movie } = db.models;
+const { Movie, Person } = db.models;
 
 (async () => {
   await db.sequelize.sync({ force: true });
