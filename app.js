@@ -25,6 +25,13 @@ const { Movie, Person } = db.models;
     });
     console.log(movie2.toJSON());
 
+    // New Person Record
+    const person = await Person.create({
+      firstName: 'Matt',
+      lastName: 'Attack',
+    });
+    console.log(person.toJSON());
+
   } catch (error) {
     // This if says "if the error is SequelizeValidationError, map over the error item(s) and return an array holding any error messages." 
     // In our case, we are outputting them to the console.
