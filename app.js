@@ -32,6 +32,16 @@ const { Movie, Person } = db.models;
     });
     console.log(person.toJSON());
 
+    // New Instance
+    const movie3 = await Movie.build({
+      title: 'Toy Story 3: Oh Dickins',
+      runtime: 103,
+      releaseDate: '2010-06-18',
+      isAvailableOnVHS: false,
+    });
+    await movie3.save(); // save the record
+    console.log(movie3.toJSON());
+
   } catch (error) {
     // This if says "if the error is SequelizeValidationError, map over the error item(s) and return an array holding any error messages." 
     // In our case, we are outputting them to the console.
