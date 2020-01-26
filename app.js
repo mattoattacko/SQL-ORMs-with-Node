@@ -42,6 +42,14 @@ const { Movie, Person } = db.models;
     await movie3.save(); // save the record
     console.log(movie3.toJSON());
 
+    // Find by Primary Key
+    const movieById = await Movie.findByPk(1);
+    console.log(movieById.toJSON());
+
+    // Find One
+    const movieByRuntime = await Movie.findOne({ where: { runtime: 115 }});
+    console.log(movieByRuntime.toJSON());
+
   } catch (error) {
     // This if says "if the error is SequelizeValidationError, map over the error item(s) and return an array holding any error messages." 
     // In our case, we are outputting them to the console.
