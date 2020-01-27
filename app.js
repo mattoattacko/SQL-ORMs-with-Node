@@ -42,13 +42,22 @@ const { Movie, Person } = db.models;
     await movie3.save(); // save the record
     console.log(movie3.toJSON());
 
-    // Find by Primary Key
+    // // Find by Primary Key
     const movieById = await Movie.findByPk(1);
     console.log(movieById.toJSON());
 
     // Find One
-    const movieByRuntime = await Movie.findOne({ where: { runtime: 115 }});
+    const movieByRuntime = await Movie.findOne({ where: { runtime: 103 }});
     console.log(movieByRuntime.toJSON());
+
+    // Returning a subset of data with attributes
+    const movies = await Movie.findAll({
+      attributes: ['id', 'title'],
+      where: {
+        isAvailableOnVHS: true,
+      },
+    });
+    console.log( movies.map(movie => movie.toJSON()) );
 
   } catch (error) {
     // This if says "if the error is SequelizeValidationError, map over the error item(s) and return an array holding any error messages." 
