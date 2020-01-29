@@ -10,8 +10,9 @@ const { Op } = db.Sequelize;
   await db.sequelize.sync({ force: true });
 
   try {
+    // All model instances
     const movie = await Movie.create({
-      title: 'Matt & Charles: Episode 1',
+      title: 'Toy Story 1',
       runtime: 81,
       releaseDate: '2000-01-02',
       isAvailableOnVHS: true,
@@ -19,7 +20,7 @@ const { Op } = db.Sequelize;
     console.log(movie.toJSON());
 
     const movie2 = await Movie.create({
-      title: 'Matt & Charles 7: Return of the Matt',
+      title: 'Toy Story 2',
       runtime: 120,
       releaseDate: '2001-01-03',
       isAvailableOnVHS: true,
@@ -35,7 +36,7 @@ const { Op } = db.Sequelize;
 
     // New Instance
     const movie3 = await Movie.build({
-      title: 'Toy Story 3: Oh Dickins',
+      title: 'Toy Story 3',
       runtime: 103,
       releaseDate: '2010-06-18',
       isAvailableOnVHS: false,
@@ -69,6 +70,21 @@ const { Op } = db.Sequelize;
       order: [['id', 'DESC']] // IDs in descending order
     });
     console.log( movies.map(movie => movie.toJSON()) );
+
+    // Update a record w/ save()
+    // const toyStory3 = await Movie.findByPk(3);
+    // toyStory3.isAvailableOnVHS = true;
+    // await toyStory3.save();
+    // console.log( toyStory3.get({ plain: true}) );
+
+    // Update a record w/ update()
+    const toyStory3 = await Movie.findByPk(3);
+    await toyStory3.update({
+      title: 'Fake Toy Story 3', // new title
+      isAvailableOnVHS: true,
+    },{ fields: [ 'title', 'isAvailableOnVHS'] });
+
+    console.log( toyStory3.get({ plain: true }) );
 
   } catch (error) {
     // This if says "if the error is SequelizeValidationError, map over the error item(s) and return an array holding any error messages." 
