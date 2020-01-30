@@ -53,38 +53,54 @@ const { Op } = db.Sequelize;
     console.log(movieByRuntime.toJSON());
 
     // Returning a subset of data with attributes
-    const movies = await Movie.findAll({
-      attributes: ['id', 'title'],
-      where: {
-        releaseDate: {
-          [Op.gte]: '2004-01-01', // >= date
-        // title: {
-        //   [Op.endsWith]: 's'
-        // },
-        },
-        runtime: {
-          [Op.gt]: 95, // > than 95
-        },
-      },
-      // order: [['releaseDate', 'ASC']], // dates in ascending order
-      order: [['id', 'DESC']] // IDs in descending order
-    });
-    console.log( movies.map(movie => movie.toJSON()) );
+    //
+    // const movies = await Movie.findAll({
+    //   attributes: ['id', 'title'],
+    //   where: {
+    //     releaseDate: {
+    //       [Op.gte]: '2004-01-01', // >= date
+    //     // title: {
+    //     //   [Op.endsWith]: 's'
+    //     // },
+    //     },
+    //     runtime: {
+    //       [Op.gt]: 95, // > than 95
+    //     },
+    //   },
+    //   // order: [['releaseDate', 'ASC']], // dates in ascending order
+    //   order: [['id', 'DESC']] // IDs in descending order
+    // });
+    // console.log( movies.map(movie => movie.toJSON()) );
 
     // Update a record w/ save()
+    //
     // const toyStory3 = await Movie.findByPk(3);
     // toyStory3.isAvailableOnVHS = true;
     // await toyStory3.save();
     // console.log( toyStory3.get({ plain: true}) );
 
     // Update a record w/ update()
-    const toyStory3 = await Movie.findByPk(3);
-    await toyStory3.update({
-      title: 'Fake Toy Story 3', // new title
-      isAvailableOnVHS: true,
-    },{ fields: [ 'title', 'isAvailableOnVHS'] });
+    //
+    // const toyStory3 = await Movie.findByPk(3);
+    // await toyStory3.update({
+    //   title: 'Fake Toy Story 3', // new title
+    //   isAvailableOnVHS: true,
+    // },{ fields: [ 'title', 'isAvailableOnVHS'] });
 
-    console.log( toyStory3.get({ plain: true }) );
+    // console.log( toyStory3.get({ plain: true }) );
+
+    // Find a Record
+    //
+    // const toyStory = await Movie.findByPk(1);
+
+    // Delete a Record
+    //
+    // await toyStory.destroy();
+
+    // Find & Log All Movies
+    //
+    const movies = await Movie.findAll();
+    console.log ( movies.map(movie => movie.toJSON()));
 
   } catch (error) {
     // This if says "if the error is SequelizeValidationError, map over the error item(s) and return an array holding any error messages." 

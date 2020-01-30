@@ -59,13 +59,15 @@ module.exports = (sequelize) => {
       defaultValue: false, // set default value
     },
   }, 
-  
+    
   // MODEL OPTIONS OBJECT
   {
     // timestamps: false, // disable timestamps
     // freezeTableName: true, // disable plural table names
     // modelName: 'movie', // set model name to 'movie', table name will be 'movies'
     // tableName: 'my_movies_table', // table name change
+
+    paranoid: true, // enable "soft" deletes
     sequelize
   });
 
